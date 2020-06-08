@@ -16,11 +16,11 @@ Deezer API implementation
 
 - **GET**
 
-  - Endpoint: `/?link=tidal_playlist_link`
+  - Endpoint: `/?link=deezer_playlist_link`
 
 - **DELETE**
 
-  - Endpoint: `/?link=tidal_playlist_link`
+  - Endpoint: `/?link=deezer_playlist_link`
 
 - **POST**
 
