@@ -28,17 +28,22 @@ const getTracks = async (tracks) => {
   });
 
   const response = await axios.all(links);
+  const tracklist = [];
 
-  const tracklist = response.map((track) => {
-    return {
+  for (const track of response) {
+    if (track.data.error) {
+      continue;
+    }
+
+    tracklist.push({
       title: track.data.title,
       artist: track.data.artist.name,
       contributors: track.data.contributors.map((artist) => artist.name),
       duration: track.data.duration,
       album: track.data.album.title,
       trackCover: track.data.album.cover_medium,
-    };
-  });
+    });
+  }
   return tracklist;
 };
 
@@ -57,7 +62,7 @@ const getPlaylistInfo = async (playlistLink) => {
     name: playlist.title,
     description: playlist.description,
     duration: playlist.duration,
-    numTracks: playlist.nb_tracks,
+    numTracks: playlistTracks.length,
     playlistCover: playlist.picture_medium,
     tracks: playlistTracks,
   };
