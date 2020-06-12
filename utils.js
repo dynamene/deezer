@@ -83,6 +83,9 @@ const findSong = async (trackInfo) => {
   const searchResults = await getTracks(res.data.data);
   for (let i = 0; i < res.data.total; i++) {
     const track = searchResults[i];
+    if (!track) {
+      continue;
+    }
     let score = 0;
 
     // Check that the title and artist are the same as the ones provided
@@ -150,7 +153,7 @@ const createPlaylist = async (tracklist, playlistInfo) => {
 
   return {
     link: resp.data.share,
-    missingTracks,
+    missingTracks: missingTracks,
     numMissingTracks: missingTracks.length,
   };
 };
