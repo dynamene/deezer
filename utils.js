@@ -57,7 +57,7 @@ const getPlaylistInfo = async (playlistLink) => {
   }
 
   const playlist = res.data;
-  const playlistTracks = await getTracks(playlist.tracks.data);
+  const playlistTracks = await getTracks(playlist.tracks.data.slice(0, 20));
   const playlistInfo = {
     name: playlist.title,
     description: playlist.description,
