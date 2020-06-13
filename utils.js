@@ -61,7 +61,6 @@ const getPlaylistInfo = async (playlistLink) => {
   const playlistInfo = {
     name: playlist.title,
     description: playlist.description,
-    duration: playlist.duration,
     numTracks: playlistTracks.length,
     playlistCover: playlist.picture_medium,
     tracks: playlistTracks,
