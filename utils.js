@@ -139,8 +139,10 @@ const createPlaylist = async (tracklist, playlistInfo) => {
   const playlistId = res.data.id;
 
   // Add playlist description
-  const descriptionURL = `https://api.deezer.com/playlist/${playlistId}/?access_token=${TOKEN}&description=${description}`;
-  await axios.post(descriptionURL);
+  if (description) {
+    const descriptionURL = `https://api.deezer.com/playlist/${playlistId}/?access_token=${TOKEN}&description=${description}`;
+    await axios.post(descriptionURL);
+  }
 
   // Add tracks to playlist
   const songs = trackIds.join(',');
