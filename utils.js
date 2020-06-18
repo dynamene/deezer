@@ -79,6 +79,9 @@ const findSong = async (trackInfo) => {
   if (res.data.total === 0) {
     return '';
   }
+  if (!res.data.data) {
+    return '';
+  }
   const searchResults = await getTracks(res.data.data);
   for (let i = 0; i < res.data.total; i++) {
     const track = searchResults[i];
